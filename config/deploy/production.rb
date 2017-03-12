@@ -1,61 +1,11 @@
-# server-based syntax
-# ======================
-# Defines a single server with a list of roles and multiple properties.
-# You can define all roles on a single server, or split them:
+role :app         ,  %w(webth) # 在该服务器上执行app相关的代码
+role :web         ,  %w(webth) # 在该服务器上执行web相关的代码，我们的app代码和web代码没有作区分
+role :db          ,  %w(webth) # 在该服务器上执行migration相关的代码，在部署多台服务器的情况下，通常指定一台服务器，因为不能多次执行同一个migration
+role :production_cron,  %w{webth} # 在该服务器上执行定时任务，将此定时任务的范围限定为sandbox_cron，使用whenever这个gem配置定时任务是会用到
 
-# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
-# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
-# server "db.example.com", user: "deploy", roles: %w{db}
-
-
-
-# role-based syntax
-# ==================
-
-# Defines a role with one or multiple servers. The primary server in each
-# group is considered to be the first unless any hosts have the primary
-# property set. Specify the username and a domain or IP for the server.
-# Don't use `:all`, it's a meta role.
-
-# role :app, %w{deploy@example.com}, my_property: :my_value
-# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
-# role :db,  %w{deploy@example.com}
-
-
-
-# Configuration
-# =============
-# You can set any configuration variable like in config/deploy.rb
-# These variables are then only loaded and set in this stage.
-# For available Capistrano configuration variables see the documentation page.
-# http://capistranorb.com/documentation/getting-started/configuration/
-# Feel free to add new variables to customise your setup.
-
-
-
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult the Net::SSH documentation.
-# http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
-#
-# Global options
-# --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# The server-based syntax can be used to override options:
-# ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }
+set :stage        ,   :sandbox # 配置stage的名称为sandbox
+set :rails_env    ,   :sandbox # 配置rails_env的值为sandbox
+set :branch       ,   :sandbox # 配置代码仓库的分支名称
+set :deploy_to    ,   "/var/www/#{fetch(:application)}/#{fetch(:stage)}" # 配置项目在服务器上的部署位置
+set :puma_threads ,   [4, 16] # 配置puma的线程数量，这个值应该会影响并发的能力
+set :puma_workers ,   1 # 配置puma worker的数量，相当于运行几个项目的实例，跟CPU数量和性能有关
