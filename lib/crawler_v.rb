@@ -27,7 +27,6 @@ class CrawlerV
         url = a.attr("href").value
         title = a.attr("title").value
         img_url = img.attr("src").value
-
         Video.create(video_type: Video::LOL, url: url, title: title, img_url: img_url)
       end
     end

@@ -16,6 +16,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'puma', '~> 3.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'whenever', '~> 0.9.4', :require => false
 # Use CoffeeScript for .coffee assets and views
 
 group :development, :test do
