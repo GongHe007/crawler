@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:GongHe007/crawler.git"
 set :rvm_ruby_version, '2.3.1'
 set :log_level, :info
 set :linked_files, %w{config/database.yml config/secrets.yml} # files we want symlinking to specific entries in shared.
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
 
 namespace :puma do
