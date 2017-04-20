@@ -1,4 +1,4 @@
-every 1.day, at: "1:00 am" , roles: [:production_cron] do
+every 1.minutes , roles: [:production_cron] do
   rake "crawler:run"
 end
 # Use this file to easily define all of your cron jobs.
