@@ -1,7 +1,7 @@
-role :app         ,  %w(webth) # 在该服务器上执行app相关的代码
-role :web         ,  %w(webth) # 在该服务器上执行web相关的代码，我们的app代码和web代码没有作区分
-role :db          ,  %w(webth) # 在该服务器上执行migration相关的代码，在部署多台服务器的情况下，通常指定一台服务器，因为不能多次执行同一个migration
-role :production_cron,  %w{webth} # 在该服务器上执行定时任务，将此定时任务的范围限定为sandbox_cron，使用whenever这个gem配置定时任务是会用到
+role :app         ,  %w(lavps) # 在该服务器上执行app相关的代码
+role :web         ,  %w(lavps) # 在该服务器上执行web相关的代码，我们的app代码和web代码没有作区分
+role :db          ,  %w(lavps) # 在该服务器上执行migration相关的代码，在部署多台服务器的情况下，通常指定一台服务器，因为不能多次执行同一个migration
+role :production_cron,  %w{lavps} # 在该服务器上执行定时任务，将此定时任务的范围限定为sandbox_cron，使用whenever这个gem配置定时任务是会用到
 
 set :stage        ,   :production # 配置stage的名称为production
 set :rails_env    ,   :production # 配置rails_env的值为production
