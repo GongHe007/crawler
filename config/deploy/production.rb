@@ -1,5 +1,5 @@
 set :rails_env, 'production'
-set :deploy_to, "/var/www/#{fetch(:rails_env)}/#{fetch(:application)}"
+set :deploy_to, "/var/www/#{fetch(:application)}/#{fetch(:rails_env)}"
 set :puma_threads, [8, 128]
 set :puma_workers, 8
 set :keep_releases, 64
