@@ -7,4 +7,4 @@ set :keep_releases, 64
 role :app, %w{lavps}
 role :web, %w{lavps}
 role :db, %w{lavps}
-role :production_cron, %w{web24}
+role :production_cron, %w{lavps}
