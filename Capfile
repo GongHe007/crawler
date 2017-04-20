@@ -9,6 +9,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/rvm'
 require 'capistrano/puma'
+require "whenever/capistrano"
 
 # Load the SCM plugin appropriate to your project:
 #
