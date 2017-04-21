@@ -1,5 +1,5 @@
 游戏新闻视频爬虫接口
-请求http://locahost:3000/api/videos?page=#{page}&per_page=#{per_page}
+请求http://128.1.67.159/api/videos/api/videos?page=#{page}&per_page=#{per_page}
 page是第几页，per_page是每页有多少条数据
 返回格式json:
 {
