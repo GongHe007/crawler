@@ -1,7 +1,11 @@
 游戏新闻视频爬虫接口
+
 请求http://128.1.67.159/api/videos/api/videos?page=#{page}&per_page=#{per_page}
+
 page是第几页，per_page是每页有多少条数据
+
 返回格式json:
+```
 {
   videos:
   {
@@ -14,3 +18,4 @@ page是第几页，per_page是每页有多少条数据
     updated_at: Sun, 12 Mar 2017 14:50:58 CST +08:00>,  #更新时间，与创建时间同理
   }
 }
+```
